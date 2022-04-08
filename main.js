@@ -33,21 +33,22 @@ function start(){
 
 function modelLoaded(){
     console.log("model loaded!")
-    status - true;
+    status = true;
 
     video.loop();
   //  video.volume(volume_num);
     video.speed(1);
-    video.volume(0);
+    
 }
 function draw(){
 
     image(video,0,0,480,380)
     
     if(status != ""){
-        objectDetector.detect(video, gotResult);
         console.log('works!')
-        for(i = 0;i < objects.legnth; i++){
+        objectDetector.detect(video, gotResult);
+        
+        for(i = 0;i < objects.length; i++){
             document.getElementById('status').innerHTML = 'Status: Objects Detected'
             document.getElementById('number_objects').innerHTML = 'Number of objects detected are:' + objects.length
             fill('#fc031c')
@@ -82,4 +83,5 @@ if(error){
 }
 console.log(results);
 objects = results
+console.log("objects passed in results" + objects)
 }
