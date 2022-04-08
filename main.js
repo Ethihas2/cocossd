@@ -2,7 +2,7 @@ video = "";
 status="";
 objects= []
 volume_num = ""
-object_Detector= ""
+objectDetector= ""
 
 
 function preload(){
@@ -23,7 +23,7 @@ function setup(){
 }
 function start(){
 
-    object_Detector = ml5.objectDetector('cocossd',modelLoaded);
+    objectDetector = ml5.objectDetector('cocossd',modelLoaded);
 
     document.getElementById('status').innerHTML = "Status: Detecting"
 
@@ -38,13 +38,14 @@ function modelLoaded(){
     video.loop();
   //  video.volume(volume_num);
     video.speed(1);
+    video.volume(0);
 }
 function draw(){
 
     image(video,0,0,480,380)
     
-    if(status != " "){
-        object_Detector.detect(video, gotResult);
+    if(status != ""){
+        objectDetector.detect(video, gotResult);
         console.log('works!')
         for(i = 0;i < objects.legnth; i++){
             document.getElementById('status').innerHTML = 'Status: Objects Detected'
